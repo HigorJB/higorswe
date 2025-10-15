@@ -26,136 +26,510 @@
             transition: opacity 0.4s ease-in-out;
         }
         
-        .page-section {
-            width: 100%;
-            display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        .nav-link.active {
+            color: #1c1917;
+            font-weight: 600;
+        }
+        
+        main {
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 97%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 97%, transparent 100%);
         }
 
-        .page-section.active {
-            display: flex;
+        main::-webkit-scrollbar {
+            width: 6px;
+        }
+        main::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        main::-webkit-scrollbar-thumb {
+            background: #d6d3d1;
+            border-radius: 3px;
+        }
+        main::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e;
         }
     </style>
 </head>
-<body class="bg-stone-100 text-stone-800 flex flex-col min-h-screen">
+<body class="bg-stone-100 text-stone-800 flex flex-col h-screen overflow-hidden">
 
-    <header class="w-full py-6 px-4 sm:px-8 z-10">
+    <a href="#home" class="nav-logo absolute left-4 sm:left-8 top-6 z-20">
+        <img src="https://github.com/HigorJB/higorswe/blob/main/logo1.png?raw=true" alt="Higor Logo" class="h-12 w-auto">
+    </a>
+
+    <div class="absolute right-4 sm:right-8 top-6 z-20">
+        <div class="relative" id="lang-switcher">
+            <button id="lang-button" class="text-stone-500 hover:text-black transition-colors">
+                <i class="fa-solid fa-language text-2xl"></i>
+            </button>
+            <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 bg-white border border-stone-200 rounded-md shadow-lg">
+                <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100" data-lang="en">English</a>
+                <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100" data-lang="pt">Português</a>
+                <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100" data-lang="ko">한국어</a>
+                <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100" data-lang="ja">日本語</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="w-full py-6 px-4 sm:px-8 z-10 bg-stone-100/80 backdrop-blur-sm">
         <nav class="max-w-7xl mx-auto flex justify-center items-center">
             <ul class="flex space-x-6 md:space-x-8">
-                <li><a href="#home" class="nav-link text-stone-600 hover:text-teal-700 transition-colors duration-300 text-sm font-medium">Home</a></li>
-                <li><a href="#about" class="nav-link text-stone-600 hover:text-teal-700 transition-colors duration-300 text-sm font-medium">About</a></li>
-                <li><a href="#experience" class="nav-link text-stone-600 hover:text-teal-700 transition-colors duration-300 text-sm font-medium">Experience</a></li>
-                <li><a href="#projects" class="nav-link text-stone-600 hover:text-teal-700 transition-colors duration-300 text-sm font-medium">Projects</a></li>
-                <li><a href="#contact" class="nav-link text-stone-600 hover:text-teal-700 transition-colors duration-300 text-sm font-medium">Contact</a></li>
+                <li><a href="#home" class="nav-link text-stone-600 hover:text-black transition-colors duration-300 text-sm font-medium" data-lang-key="navHome">Home</a></li>
+                <li><a href="#about" class="nav-link text-stone-600 hover:text-black transition-colors duration-300 text-sm font-medium" data-lang-key="navAbout">About</a></li>
+                <li><a href="#experience" class="nav-link text-stone-600 hover:text-black transition-colors duration-300 text-sm font-medium" data-lang-key="navExperience">Experience</a></li>
+                <li><a href="#projects" class="nav-link text-stone-600 hover:text-black transition-colors duration-300 text-sm font-medium" data-lang-key="navProjects">Projects</a></li>
+                <li><a href="#contact" class="nav-link text-stone-600 hover:text-black transition-colors duration-300 text-sm font-medium" data-lang-key="navContact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-8">
+    <main class="flex-grow overflow-y-auto">
         
-        <section id="home" class="page-section active justify-center">
-            <div class="text-center">
-                <h1 class="text-6xl md:text-8xl font-bold text-teal-700 tracking-tight" id="dynamic-name">
-                    Higor.
-                </h1>
-                <p class="mt-4 text-xl md:text-2xl font-light text-stone-600">
-                    Software Engineer
-                </p>
+        <section id="home" class="page-section min-h-full flex flex-col items-center justify-center text-center p-8">
+            <h1 class="text-6xl md:text-8xl font-bold text-black tracking-tight" id="dynamic-name">
+                Higor.
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl font-light text-stone-600" data-lang-key="homeSubtitle">
+                Software Engineer
+            </p>
+        </section>
+
+        <section id="about" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
+            <div class="max-w-6xl w-full space-y-20">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    <div class="lg:col-span-2 space-y-12">
+                        <div>
+                            <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="aboutTitle">A Passion for Solving Problems</h2>
+                            <div class="space-y-4 text-stone-600 leading-relaxed">
+                                <p data-lang-key="aboutP1">My journey in technology is driven by a passion for building solutions that are not only functional and efficient, but also intuitive. I transform complex challenges into simple and elegant software.</p>
+                                <p data-lang-key="aboutP2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-800 mb-4" data-lang-key="aboutSubtitle">Beyond the Code</h3>
+                            <div class="space-y-4 text-stone-600 leading-relaxed">
+                                <p data-lang-key="aboutP3">My curiosity extends to areas like academic research and 3D modeling, where I explore new ways to visualize data and create immersive experiences. These passions fuel my innovative approach to software engineering.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="aspect-square bg-stone-200/80 border border-stone-300/60 flex items-center justify-center">
+                            <span class="text-stone-400 text-sm" data-lang-key="imgPlaceholder">Image Placeholder</span>
+                        </div>
+                        <div class="aspect-square bg-stone-200/80 border border-stone-300/60 flex items-center justify-center">
+                            <span class="text-stone-400 text-sm" data-lang-key="imgPlaceholder">Image Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-center text-3xl font-bold text-black mb-10" data-lang-key="techStackTitle">My Tech Stack</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="border border-stone-200 p-6">
+                            <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techFrontend">Frontend</h3>
+                            <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
+                                <i class="fab fa-react text-4xl text-stone-600" title="React"></i>
+                                <i class="fab fa-angular text-4xl text-stone-600" title="Angular"></i>
+                                <i class="fab fa-vuejs text-4xl text-stone-600" title="Vue.js"></i>
+                                <i class="fab fa-js text-4xl text-stone-600" title="JavaScript"></i>
+                            </div>
+                        </div>
+                        <div class="border border-stone-200 p-6">
+                            <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techBackend">Backend</h3>
+                            <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
+                                <i class="fab fa-node-js text-4xl text-stone-600" title="Node.js"></i>
+                                <i class="fab fa-python text-4xl text-stone-600" title="Python"></i>
+                                <i class="fab fa-java text-4xl text-stone-600" title="Java"></i>
+                                <i class="fab fa-docker text-4xl text-stone-600" title="Docker"></i>
+                            </div>
+                        </div>
+                        <div class="border border-stone-200 p-6">
+                            <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techML">ML & Data</h3>
+                            <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
+                                <i class="fas fa-brain text-4xl text-stone-600" title="Machine Learning"></i>
+                                <i class="fab fa-aws text-4xl text-stone-600" title="AWS"></i>
+                                <span class="text-2xl font-bold text-stone-500">TF</span>
+                                <i class="fas fa-database text-4xl text-stone-600" title="SQL/NoSQL"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="page-section items-center max-w-7xl mx-auto">
-            <div class="w-1/2 p-8">
-                
+        <section id="experience" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
+            <div class="max-w-4xl w-full text-center">
+                 <h2 class="text-3xl font-bold text-black mb-12" data-lang-key="expTitle">Professional Experience</h2>
+                 <div class="relative border-l-2 border-stone-200 ml-4 lg:ml-0">
+                    <div class="mb-10 ml-8">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-stone-200 rounded-full -left-3 ring-8 ring-stone-100">
+                            <i class="fa-solid fa-circle text-black text-[6px]"></i>
+                        </span>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-stone-900 text-left" data-lang-key="expJob1">Senior Developer <span class="text-stone-800 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full bg-stone-200" data-lang-key="expJob1Tag">Current</span></h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-stone-500 text-left">Tech Solutions Inc.</time>
+                        <p class="mb-4 text-base font-normal text-stone-600 text-left" data-lang-key="expJob1Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    </div>
+                     <div class="mb-10 ml-8">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-stone-200 rounded-full -left-3 ring-8 ring-stone-100">
+                           <i class="fa-solid fa-circle text-black text-[6px]"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-stone-900 text-left" data-lang-key="expJob2">Mid-level Developer</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-stone-500 text-left">Innovate Corp.</time>
+                        <p class="text-base font-normal text-stone-600 text-left" data-lang-key="expJob2Desc">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                    </div>
+                 </div>
             </div>
-            <div class="w-1/2 p-8">
-                <h2 class="text-3xl font-bold text-teal-700 mb-4">About Me</h2>
-                <p class="text-stone-600 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p class="text-stone-600">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+        </section>
+
+        <section id="projects" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
+             <div class="max-w-6xl w-full text-center">
+                 <h2 class="text-3xl font-bold text-black mb-12" data-lang-key="projectsTitle">Featured Projects</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj1Title">Predictive Defect Analysis</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj1Desc">A system to forecast component defects using machine learning, reducing production failures.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Machine Learning</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Python</span>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj2Title">RPA for Fiscal Automation</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj2Desc">Automated the issuance and validation of invoices, optimizing financial workflows.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">RPA</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Automation</span>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj3Title">Computer Vision Inspection</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj3Desc">Developed a system for real-time component inspection, ensuring quality control standards.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Computer Vision</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">OpenCV</span>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj4Title">IoT Monitoring Systems</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj4Desc">Created IoT solutions for monitoring production processes, providing real-time data insights.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">IoT</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">AWS</span>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj5Title">AI-Powered Chatbots</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj5Desc">Built intelligent chatbots to automate customer support and internal process management.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">NLP</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Dialogflow</span>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj6Title">Product Management Systems</h3>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                        </div>
+                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj6Desc">A comprehensive system for product lifecycle management, from ideation to launch.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Web Development</span>
+                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">React</span>
+                        </div>
+                    </a>
+                 </div>
+             </div>
+        </section>
+
+        <section id="contact" class="page-section min-h-full flex flex-col items-center justify-center text-center p-8">
+            <div class="max-w-lg w-full">
+                 <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="contactTitle">Let's Build Something Great</h2>
+                 <p class="text-stone-600 mb-8" data-lang-key="contactDesc">Have a project in mind or want to connect? I'm always open to new challenges and collaborations.</p>
+                 <a href="mailto:exemplo@email.com" class="inline-block bg-black text-white font-semibold py-3 px-8 rounded-lg hover:bg-stone-800 transition-colors duration-300 shadow-md" data-lang-key="contactButton">
+                    Say Hello
+                 </a>
             </div>
         </section>
         
     </main>
 
-    <footer class="w-full py-8 px-4 lg:px-8 bg-stone-100">
-        <div class="max-w-7xl mx-auto flex justify-center items-center">
-            <div class="flex space-x-5">
-                <a href="#" target="_blank" aria-label="LinkedIn" class="text-stone-400 hover:text-teal-700 transition-colors duration-300"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                <a href="#" target="_blank" aria-label="GitHub" class="text-stone-400 hover:text-teal-700 transition-colors duration-300"><i class="fa-brands fa-github fa-lg"></i></a>
-                <a href="#" target="_blank" aria-label="Spotify" class="text-stone-400 hover:text-teal-700 transition-colors duration-300"><i class="fa-brands fa-spotify fa-lg"></i></a>
+    <footer class="w-full py-6 px-4 lg:px-8 bg-stone-100">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <div class="flex space-x-6 mb-3">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-stone-400 hover:text-black transition-colors duration-300"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub" class="text-stone-400 hover:text-black transition-colors duration-300"><i class="fa-brands fa-github fa-lg"></i></a>
+                <a href="https://spotify.com" target="_blank" aria-label="Spotify" class="text-stone-400 hover:text-black transition-colors duration-300"><i class="fa-brands fa-spotify fa-lg"></i></a>
             </div>
-        </div>
-        <div class="text-center mt-6">
-            <p class="text-xs text-stone-400">&copy; <span id="current-year"></span> Higor. All rights reserved.</p>
+            <div>
+                <p class="text-xs text-stone-400">&copy; <span id="current-year"></span> <span data-lang-key="footerRights">Higor. All rights reserved.</span></p>
+            </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.page-section');
 
-            function activateSection(targetId) {
-                sections.forEach(section => {
-                    if ('#' + section.id === targetId) {
-                        section.classList.add('active');
-                        setTimeout(() => {
-                           section.style.opacity = '1';
-                           section.style.transform = 'translateY(0)';
-                        }, 20);
-                    } else {
-                        section.classList.remove('active');
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(15px)';
-                    }
-                });
+            const translations = {
+                en: {
+                    navHome: 'Home',
+                    navAbout: 'About',
+                    navExperience: 'Experience',
+                    navProjects: 'Projects',
+                    navContact: 'Contact',
+                    homeSubtitle: 'Software Engineer',
+                    aboutTitle: 'A Passion for Solving Problems',
+                    aboutP1: 'My journey in technology is driven by a passion for building solutions that are not only functional and efficient, but also intuitive. I transform complex challenges into simple and elegant software.',
+                    aboutP2: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    aboutSubtitle: 'Beyond the Code',
+                    aboutP3: 'My curiosity extends to areas like academic research and 3D modeling, where I explore new ways to visualize data and create immersive experiences. These passions fuel my innovative approach to software engineering.',
+                    imgPlaceholder: 'Image Placeholder',
+                    techStackTitle: 'My Tech Stack',
+                    techFrontend: 'Frontend',
+                    techBackend: 'Backend',
+                    techML: 'ML & Data',
+                    expTitle: 'Professional Experience',
+                    expJob1: 'Senior Developer',
+                    expJob1Tag: 'Current',
+                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+                    expJob2: 'Mid-level Developer',
+                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    projectsTitle: 'Featured Projects',
+                    proj1Title: 'Predictive Defect Analysis',
+                    proj1Desc: 'A system to forecast component defects using machine learning, reducing production failures.',
+                    proj2Title: 'RPA for Fiscal Automation',
+                    proj2Desc: 'Automated the issuance and validation of invoices, optimizing financial workflows.',
+                    proj3Title: 'Computer Vision Inspection',
+                    proj3Desc: 'Developed a system for real-time component inspection, ensuring quality control standards.',
+                    proj4Title: 'IoT Monitoring Systems',
+                    proj4Desc: 'Created IoT solutions for monitoring production processes, providing real-time data insights.',
+                    proj5Title: 'AI-Powered Chatbots',
+                    proj5Desc: 'Built intelligent chatbots to automate customer support and internal process management.',
+                    proj6Title: 'Product Management Systems',
+                    proj6Desc: 'A comprehensive system for product lifecycle management, from ideation to launch.',
+                    contactTitle: "Let's Build Something Great",
+                    contactDesc: "Have a project in mind or want to connect? I'm always open to new challenges and collaborations.",
+                    contactButton: 'Say Hello',
+                    footerRights: 'Higor. All rights reserved.'
+                },
+                pt: {
+                    navHome: 'Início',
+                    navAbout: 'Sobre',
+                    navExperience: 'Experiência',
+                    navProjects: 'Projetos',
+                    navContact: 'Contato',
+                    homeSubtitle: 'Engenheiro de Software',
+                    aboutTitle: 'Paixão por Resolver Problemas',
+                    aboutP1: 'Minha jornada na tecnologia é movida pela paixão de construir soluções que não são apenas funcionais e eficientes, mas também intuitivas. Eu transformo desafios complexos em software simples e elegante.',
+                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    aboutSubtitle: 'Além do Código',
+                    aboutP3: 'Minha curiosidade se estende a áreas como pesquisa acadêmica e modelagem 3D, onde exploro novas formas de visualizar dados e criar experiências imersivas. Essas paixões alimentam minha abordagem inovadora na engenharia de software.',
+                    imgPlaceholder: 'Espaço para Imagem',
+                    techStackTitle: 'Minhas Tecnologias',
+                    techFrontend: 'Frontend',
+                    techBackend: 'Backend',
+                    techML: 'ML & Dados',
+                    expTitle: 'Experiência Profissional',
+                    expJob1: 'Desenvolvedor Sênior',
+                    expJob1Tag: 'Atual',
+                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+                    expJob2: 'Desenvolvedor Pleno',
+                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    projectsTitle: 'Projetos em Destaque',
+                    proj1Title: 'Análise Preditiva de Defeitos',
+                    proj1Desc: 'Um sistema para prever defeitos de componentes usando machine learning, reduzindo falhas de produção.',
+                    proj2Title: 'RPA para Automação Fiscal',
+                    proj2Desc: 'Automatizou a emissão e validação de notas fiscais, otimizando os fluxos de trabalho financeiros.',
+                    proj3Title: 'Inspeção com Visão Computacional',
+                    proj3Desc: 'Desenvolveu um sistema para inspeção de componentes em tempo real, garantindo os padrões de controle de qualidade.',
+                    proj4Title: 'Sistemas de Monitoramento IoT',
+                    proj4Desc: 'Criou soluções de IoT para monitorar processos de produção, fornecendo insights de dados em tempo real.',
+                    proj5Title: 'Chatbots com IA',
+                    proj5Desc: 'Construiu chatbots inteligentes para automatizar o suporte ao cliente e o gerenciamento de processos internos.',
+                    proj6Title: 'Sistemas de Gestão de Produtos',
+                    proj6Desc: 'Um sistema abrangente para o gerenciamento do ciclo de vida do produto, da ideação ao lançamento.',
+                    contactTitle: 'Vamos Construir Algo Incrível',
+                    contactDesc: 'Tem um projeto em mente ou quer se conectar? Estou sempre aberto a novos desafios e colaborações.',
+                    contactButton: 'Diga Olá',
+                    footerRights: 'Higor. Todos os direitos reservados.'
+                },
+                ko: {
+                    navHome: '홈',
+                    navAbout: '소개',
+                    navExperience: '경험',
+                    navProjects: '프로젝트',
+                    navContact: '연락처',
+                    homeSubtitle: '소프트웨어 엔지니어',
+                    aboutTitle: '문제 해결에 대한 열정',
+                    aboutP1: '저의 기술 여정은 기능적이고 효율적일 뿐만 아니라 직관적인 솔루션을 구축하려는 열정으로 움직입니다. 복잡한 문제를 간단하고 우아한 소프트웨어로 변환합니다.',
+                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    aboutSubtitle: '코드 너머',
+                    aboutP3: '저의 호기심은 학술 연구 및 3D 모델링과 같은 분야로 확장되어 데이터를 시각화하고 몰입형 경험을 만드는 새로운 방법을 탐구합니다. 이러한 열정은 소프트웨어 엔지니어링에 대한 저의 혁신적인 접근 방식에 활력을 불어넣습니다.',
+                    imgPlaceholder: '이미지 자리 표시자',
+                    techStackTitle: '내 기술 스택',
+                    techFrontend: '프론트엔드',
+                    techBackend: '백엔드',
+                    techML: '머신러닝 및 데이터',
+                    expTitle: '업무 경험',
+                    expJob1: '시니어 개발자',
+                    expJob1Tag: '현재',
+                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+                    expJob2: '중급 개발자',
+                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    projectsTitle: '주요 프로젝트',
+                    proj1Title: '예측 결함 분석',
+                    proj1Desc: '기계 학습을 사용하여 부품 결함을 예측하고 생산 실패를 줄이는 시스템입니다.',
+                    proj2Title: '재정 자동화를 위한 RPA',
+                    proj2Desc: '송장 발행 및 검증을 자동화하여 재무 워크플로를 최적화했습니다.',
+                    proj3Title: '컴퓨터 비전 검사',
+                    proj3Desc: '실시간 부품 검사를 위한 시스템을 개발하여 품질 관리 표준을 보장했습니다.',
+                    proj4Title: 'IoT 모니터링 시스템',
+                    proj4Desc: '생산 공정을 모니터링하기 위한 IoT 솔루션을 만들어 실시간 데이터 통찰력을 제공했습니다.',
+                    proj5Title: 'AI 기반 챗봇',
+                    proj5Desc: '고객 지원 및 내부 프로세스 관리를 자동화하기 위해 지능형 챗봇을 구축했습니다.',
+                    proj6Title: '제품 관리 시스템',
+                    proj6Desc: '아이디어 구상부터 출시까지 제품 수명주기 관리를 위한 포괄적인 시스템입니다.',
+                    contactTitle: '훌륭한 것을 만들어 봅시다',
+                    contactDesc: '프로젝트를 염두에 두고 있거나 연결하고 싶으신가요? 저는 항상 새로운 도전과 협업에 열려 있습니다.',
+                    contactButton: '안녕하세요',
+                    footerRights: 'Higor. 모든 권리 보유.'
+                },
+                ja: {
+                    navHome: 'ホーム',
+                    navAbout: '概要',
+                    navExperience: '経験',
+                    navProjects: 'プロジェクト',
+                    navContact: '連絡先',
+                    homeSubtitle: 'ソフトウェアエンジニア',
+                    aboutTitle: '問題解決への情熱',
+                    aboutP1: '私のテクノロジーの旅は、機能的で効率的であるだけでなく、直感的なソリューションを構築するという情熱によって動かされています。私は複雑な課題をシンプルでエレガントなソフトウェアに変換します。',
+                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    aboutSubtitle: 'コードを超えて',
+                    aboutP3: '私の好奇心は、学術研究や3Dモデリングなどの分野にまで及び、データを視覚化して没入型の体験を生み出す新しい方法を探求しています。これらの情熱が、ソフトウェアエンジニアリングに対する私の革신的なアプローチを支えています。',
+                    imgPlaceholder: '画像プレースホルダー',
+                    techStackTitle: '私の技術スタック',
+                    techFrontend: 'フロントエンド',
+                    techBackend: 'バックエンド',
+                    techML: '機械学習とデータ',
+                    expTitle: '職務経験',
+                    expJob1: 'シニア開発者',
+                    expJob1Tag: '現在',
+                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+                    expJob2: '中級開発者',
+                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    projectsTitle: '注目のプロジェクト',
+                    proj1Title: '予測欠陥分析',
+                    proj1Desc: '機械学習を使用してコンポーネントの欠陥を予測し、生産の失敗を減らすシステム。',
+                    proj2Title: '財政自動化のためのRPA',
+                    proj2Desc: '請求書の発行と検証を自動化し、財務ワークフローを最適化しました。',
+                    proj3Title: 'コンピュータービジョン検査',
+                    proj3Desc: 'リアルタイムのコンポーネント検査のためのシステムを開発し、品質管理基準を確保しました。',
+                    proj4Title: 'IoT監視システム',
+                    proj4Desc: '生産プロセスを監視するためのIoTソリューションを作成し、リアルタイムのデータインサイトを提供しました。',
+                    proj5Title: 'AI搭載チャットボット',
+                    proj5Desc: '顧客サポートと内部プロセス管理を自動化するために、インテリジェントなチャットボットを構築しました。',
+                    proj6Title: '製品管理システム',
+                    proj6Desc: 'アイデア出しから発売までの製品ライフサイクル管理のための包括的なシステム。',
+                    contactTitle: '素晴らしいものを一緒に作りましょう',
+                    contactDesc: 'プロジェクトを検討中ですか、それとも連絡を取りたいですか？私は常に新しい挑戦と協力にオープンです。',
+                    contactButton: 'こんにちは',
+                    footerRights: 'Higor. 全著作権所有。'
+                }
+            };
 
-                navLinks.forEach(link => {
-                    link.classList.remove('text-teal-700', 'font-semibold');
-                    link.classList.add('text-stone-600', 'font-medium');
+            let nameInterval;
+            const nameElement = document.getElementById('dynamic-name');
+            const nameStrings = {
+                en: 'Higor.',
+                pt: 'Higor.',
+                ko: '히고르.',
+                ja: 'ヒゴール.'
+            };
 
-                    if (link.getAttribute('href') === targetId) {
-                        link.classList.remove('text-stone-600', 'font-medium');
-                        link.classList.add('text-teal-700', 'font-semibold');
-                    }
-                });
+            function updateNameForLanguage(lang) {
+                if (nameInterval) clearInterval(nameInterval);
+                if (!nameElement) return;
+
+                const nameText = nameStrings[lang] || nameStrings['en'];
+                nameElement.textContent = nameText;
+                nameElement.style.opacity = '1';
             }
 
-            activateSection('#home');
+            function switchLanguage(lang) {
+                document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+                const langTranslations = translations[lang];
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    activateSection(targetId);
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.dataset.langKey;
+                    const translation = langTranslations[key];
+                    if (translation !== undefined) {
+                         if (key === 'expJob1') {
+                            el.childNodes[0].nodeValue = translation + ' ';
+                        } else {
+                            el.textContent = translation;
+                        }
+                    }
                 });
+                updateNameForLanguage(lang);
+            }
+
+            switchLanguage('en');
+
+            const langButton = document.getElementById('lang-button');
+            const langMenu = document.getElementById('lang-menu');
+
+            langButton.addEventListener('click', () => {
+                langMenu.classList.toggle('hidden');
+            });
+            
+            langMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    e.preventDefault();
+                    const lang = e.target.dataset.lang;
+                    switchLanguage(lang);
+                    langMenu.classList.add('hidden');
+                }
             });
 
-            const nameElement = document.getElementById('dynamic-name');
-            if (nameElement) {
-                const names = ['Higor.', 'ヒゴール.', '히고르.'];
-                let currentIndex = 0;
+            document.addEventListener('click', (e) => {
+                const switcher = document.getElementById('lang-switcher');
+                if (!switcher.contains(e.target)) {
+                    langMenu.classList.add('hidden');
+                }
+            });
+            
+            const sections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
 
-                setInterval(() => {
-                    nameElement.style.opacity = '0';
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % names.length;
-                        nameElement.textContent = names[currentIndex];
-                        nameElement.style.opacity = '1';
-                    }, 400);
-                }, 3000);
-            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                        });
+                    }
+                });
+            }, { root: document.querySelector('main'), threshold: 0.5 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
         });
     </script>
 
 </body>
 </html>
-
