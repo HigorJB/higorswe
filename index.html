@@ -49,13 +49,24 @@
         main::-webkit-scrollbar-thumb:hover {
             background: #a8a29e;
         }
+        .gradient-corner {
+            position: relative;
+            overflow: hidden;
+        }
+        .gradient-corner::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, white 20%, transparent 70%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-stone-100 text-stone-800 flex flex-col h-screen overflow-hidden">
-
-    <a href="#home" class="nav-logo absolute left-4 sm:left-8 top-6 z-20">
-        <img src="https://github.com/HigorJB/higorswe/blob/main/logo1.png?raw=true" alt="Higor Logo" class="h-12 w-auto">
-    </a>
 
     <div class="absolute right-4 sm:right-8 top-6 z-20">
         <div class="relative" id="lang-switcher">
@@ -86,6 +97,7 @@
     <main class="flex-grow overflow-y-auto">
         
         <section id="home" class="page-section min-h-full flex flex-col items-center justify-center text-center p-8">
+            <img src="https://github.com/HigorJB/higorswe/blob/main/logo1.png?raw=true" alt="Higor Logo" class="h-20 w-auto mb-6">
             <h1 class="text-6xl md:text-8xl font-bold text-black tracking-tight" id="dynamic-name">
                 Higor.
             </h1>
@@ -96,36 +108,36 @@
 
         <section id="about" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
             <div class="max-w-6xl w-full space-y-20">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-                    <div class="lg:col-span-2 space-y-12">
-                        <div>
-                            <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="aboutTitle">A Passion for Solving Problems</h2>
-                            <div class="space-y-4 text-stone-600 leading-relaxed">
-                                <p data-lang-key="aboutP1">My journey in technology is driven by a passion for building solutions that are not only functional and efficient, but also intuitive. I transform complex challenges into simple and elegant software.</p>
-                                <p data-lang-key="aboutP2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-stone-800 mb-4" data-lang-key="aboutSubtitle">Beyond the Code</h3>
-                            <div class="space-y-4 text-stone-600 leading-relaxed">
-                                <p data-lang-key="aboutP3">My curiosity extends to areas like academic research and 3D modeling, where I explore new ways to visualize data and create immersive experiences. These passions fuel my innovative approach to software engineering.</p>
-                            </div>
-                        </div>
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="aboutTitle">A Passion for Solving Problems</h2>
+                    <div class="max-w-3xl mx-auto space-y-4 text-stone-600 leading-relaxed">
+                        <p data-lang-key="aboutP1">As a technology enthusiast, I'm driven by curiosity and a passion for building intuitive, efficient solutions. I enjoy transforming complex challenges into elegant software, always eager to learn and explore what's next.</p>
+                        <p data-lang-key="aboutP3">Beyond coding, I'm an avid chess player, footballer, and runner. I also have a deep appreciation for Japanese and Korean culture, and I'm actively studying both languages. These diverse interests fuel my creative approach to problem-solving.</p>
                     </div>
-                    <div class="space-y-8">
-                        <div class="aspect-square bg-stone-200/80 border border-stone-300/60 flex items-center justify-center">
-                            <span class="text-stone-400 text-sm" data-lang-key="imgPlaceholder">Image Placeholder</span>
-                        </div>
-                        <div class="aspect-square bg-stone-200/80 border border-stone-300/60 flex items-center justify-center">
-                            <span class="text-stone-400 text-sm" data-lang-key="imgPlaceholder">Image Placeholder</span>
-                        </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="border border-stone-200 p-6 rounded-lg">
+                        <i class="fa-solid fa-chess-knight text-4xl text-stone-600 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-stone-800" data-lang-key="hobbyCard1Title">Strategy & Logic</h3>
+                        <p class="text-sm text-stone-500" data-lang-key="hobbyCard1Desc">Chess</p>
+                    </div>
+                    <div class="border border-stone-200 p-6 rounded-lg">
+                        <i class="fa-solid fa-person-running text-4xl text-stone-600 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-stone-800" data-lang-key="hobbyCard2Title">Discipline & Motion</h3>
+                        <p class="text-sm text-stone-500" data-lang-key="hobbyCard2Desc">Football & Running</p>
+                    </div>
+                    <div class="border border-stone-200 p-6 rounded-lg gradient-corner">
+                        <i class="fa-solid fa-book-open-reader text-4xl text-stone-600 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-stone-800" data-lang-key="hobbyCard3Title">Culture & Language</h3>
+                        <p class="text-sm text-stone-500" data-lang-key="hobbyCard3Desc">Japan & South Korea</p>
                     </div>
                 </div>
 
                 <div>
                     <h2 class="text-center text-3xl font-bold text-black mb-10" data-lang-key="techStackTitle">My Tech Stack</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="border border-stone-200 p-6">
+                        <div class="border border-stone-200 p-6 rounded-lg">
                             <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techFrontend">Frontend</h3>
                             <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
                                 <i class="fab fa-react text-4xl text-stone-600" title="React"></i>
@@ -134,7 +146,7 @@
                                 <i class="fab fa-js text-4xl text-stone-600" title="JavaScript"></i>
                             </div>
                         </div>
-                        <div class="border border-stone-200 p-6">
+                        <div class="border border-stone-200 p-6 rounded-lg">
                             <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techBackend">Backend</h3>
                             <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
                                 <i class="fab fa-node-js text-4xl text-stone-600" title="Node.js"></i>
@@ -143,7 +155,7 @@
                                 <i class="fab fa-docker text-4xl text-stone-600" title="Docker"></i>
                             </div>
                         </div>
-                        <div class="border border-stone-200 p-6">
+                        <div class="border border-stone-200 p-6 rounded-lg">
                             <h3 class="text-xl font-semibold text-stone-800 mb-6" data-lang-key="techML">ML & Data</h3>
                             <div class="flex flex-wrap gap-x-8 gap-y-6 items-center">
                                 <i class="fas fa-brain text-4xl text-stone-600" title="Machine Learning"></i>
@@ -159,109 +171,133 @@
 
         <section id="experience" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
             <div class="max-w-4xl w-full text-center">
-                 <h2 class="text-3xl font-bold text-black mb-12" data-lang-key="expTitle">Professional Experience</h2>
-                 <div class="relative border-l-2 border-stone-200 ml-4 lg:ml-0">
+                <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="expTitle">Professional Experience</h2>
+                <p class="text-stone-500 mb-12" data-lang-key="expSubtitle">I've had the privilege of contributing my skills at a world-class company.</p>
+       
+                <div class="max-w-2xl mx-auto mb-16">
+                    <div class="bg-white p-8 rounded-lg border border-stone-200 shadow-sm text-left flex items-center space-x-6">
+                        <div class="flex-shrink-0">
+                           <img src="https://pngimg.com/uploads/samsung_logo/samsung_logo_PNG8.png" alt="Samsung Logo" class="h-10">
+                        </div>
+                        <div>
+                             <h3 class="text-2xl font-bold text-stone-900">Samsung Electronics</h3>
+                             <p class="text-base text-stone-600" data-lang-key="expJob1">Analyst Developer</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-6">
+                       <a href="#" class="text-stone-600 hover:text-black transition-colors group inline-flex items-center">
+                           <span data-lang-key="resumeText">Resume</span>
+                           <i class="fa-solid fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                       </a>
+                   </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-black mb-8" data-lang-key="expTimelineTitle">Career Timeline</h3>
+                <div class="relative border-l-2 border-stone-200 ml-4 lg:ml-0 max-w-2xl mx-auto">
                     <div class="mb-10 ml-8">
                         <span class="absolute flex items-center justify-center w-6 h-6 bg-stone-200 rounded-full -left-3 ring-8 ring-stone-100">
-                            <i class="fa-solid fa-circle text-black text-[6px]"></i>
+                            <i class="fa-solid fa-briefcase text-stone-600 text-xs"></i>
                         </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-stone-900 text-left" data-lang-key="expJob1">Senior Developer <span class="text-stone-800 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full bg-stone-200" data-lang-key="expJob1Tag">Current</span></h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-stone-500 text-left">Tech Solutions Inc.</time>
-                        <p class="mb-4 text-base font-normal text-stone-600 text-left" data-lang-key="expJob1Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h4 class="flex items-center mb-1 text-lg font-semibold text-stone-900 text-left" data-lang-key="expJob1">Analyst Developer</h4>
+                        <time class="block mb-2 text-sm font-normal leading-none text-stone-500 text-left" data-lang-key="expJob1Company">Samsung Electronics</time>
+                        <p class="mb-4 text-base font-normal text-stone-600 text-left" data-lang-key="expJob1Desc">Developed automation solutions using RPA, created internal web applications, and applied machine learning models with statistical software to enhance data-driven processes.</p>
                     </div>
-                     <div class="mb-10 ml-8">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-stone-200 rounded-full -left-3 ring-8 ring-stone-100">
-                           <i class="fa-solid fa-circle text-black text-[6px]"></i>
-                        </span>
-                        <h3 class="text-lg font-semibold text-stone-900 text-left" data-lang-key="expJob2">Mid-level Developer</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-stone-500 text-left">Innovate Corp.</time>
-                        <p class="text-base font-normal text-stone-600 text-left" data-lang-key="expJob2Desc">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                    </div>
-                 </div>
-            </div>
+               </div>
+           </div>
         </section>
 
         <section id="projects" class="page-section min-h-full flex flex-col items-center justify-center p-8 lg:p-16">
              <div class="max-w-6xl w-full text-center">
                  <h2 class="text-3xl font-bold text-black mb-12" data-lang-key="projectsTitle">Featured Projects</h2>
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj1Title">Predictive Defect Analysis</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj1Desc">A system to forecast component defects using machine learning, reducing production failures.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Machine Learning</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Python</span>
-                        </div>
-                    </a>
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj2Title">RPA for Fiscal Automation</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj2Desc">Automated the issuance and validation of invoices, optimizing financial workflows.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">RPA</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Automation</span>
-                        </div>
-                    </a>
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj3Title">Computer Vision Inspection</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj3Desc">Developed a system for real-time component inspection, ensuring quality control standards.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Computer Vision</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">OpenCV</span>
-                        </div>
-                    </a>
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj4Title">IoT Monitoring Systems</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj4Desc">Created IoT solutions for monitoring production processes, providing real-time data insights.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">IoT</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">AWS</span>
-                        </div>
-                    </a>
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj5Title">AI-Powered Chatbots</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj5Desc">Built intelligent chatbots to automate customer support and internal process management.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">NLP</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Dialogflow</span>
-                        </div>
-                    </a>
-                    <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj6Title">Product Management Systems</h3>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
-                        </div>
-                        <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj6Desc">A comprehensive system for product lifecycle management, from ideation to launch.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Web Development</span>
-                            <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">React</span>
-                        </div>
-                    </a>
-                 </div>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj1Title">Predictive Defect Analysis</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj1Desc">A system to forecast component defects using machine learning, reducing production failures.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Machine Learning</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Python</span>
+                         </div>
+                     </a>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj2Title">RPA for Fiscal Automation</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj2Desc">Automated the issuance and validation of invoices, optimizing financial workflows.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">RPA</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Automation</span>
+                         </div>
+                     </a>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj3Title">Computer Vision Inspection</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj3Desc">Developed a system for real-time component inspection, ensuring quality control standards.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Computer Vision</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">OpenCV</span>
+                         </div>
+                     </a>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj4Title">IoT Monitoring Systems</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj4Desc">Created IoT solutions for monitoring production processes, providing real-time data insights.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">IoT</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">AWS</span>
+                         </div>
+                     </a>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj5Title">AI-Powered Chatbots</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj5Desc">Built intelligent chatbots to automate customer support and internal process management.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">NLP</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Dialogflow</span>
+                         </div>
+                     </a>
+                     <a href="#" target="_blank" class="group block bg-white rounded-lg border border-stone-200 p-6 text-left hover:border-stone-300 hover:bg-stone-50 transition-all duration-300">
+                         <div class="flex justify-between items-start">
+                             <h3 class="text-lg font-bold text-stone-800 mb-2" data-lang-key="proj6Title">Product Management Systems</h3>
+                             <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 group-hover:text-black transition-colors"></i>
+                         </div>
+                         <p class="text-stone-600 text-sm flex-grow mb-4" data-lang-key="proj6Desc">A comprehensive system for product lifecycle management, from ideation to launch.</p>
+                         <div class="flex flex-wrap gap-2">
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">Web Development</span>
+                             <span class="text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">React</span>
+                         </div>
+                     </a>
+                </div>
              </div>
         </section>
 
         <section id="contact" class="page-section min-h-full flex flex-col items-center justify-center text-center p-8">
-            <div class="max-w-lg w-full">
-                 <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="contactTitle">Let's Build Something Great</h2>
-                 <p class="text-stone-600 mb-8" data-lang-key="contactDesc">Have a project in mind or want to connect? I'm always open to new challenges and collaborations.</p>
-                 <a href="mailto:exemplo@email.com" class="inline-block bg-black text-white font-semibold py-3 px-8 rounded-lg hover:bg-stone-800 transition-colors duration-300 shadow-md" data-lang-key="contactButton">
-                    Say Hello
-                 </a>
+            <div class="max-w-xl w-full">
+                 <h2 class="text-3xl font-bold text-black mb-4" data-lang-key="contactTitle">Get in Touch</h2>
+                 <p class="text-stone-600 mb-8 max-w-md mx-auto" data-lang-key="contactDesc">Have a question, a project idea, or just want to connect? Feel free to reach out. I'm always open to discussing new challenges and collaborations.</p>
+                 <div class="bg-white border border-stone-200 rounded-lg p-8 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fa-solid fa-envelope text-3xl text-stone-500"></i>
+                        </div>
+                        <div class="flex-1 min-w-0 text-left">
+                            <p class="text-sm text-stone-500" data-lang-key="contactEmail">Email me at</p>
+                            <a href="mailto:higorbritocontact@gmail.com" class="text-lg font-semibold text-stone-800 truncate hover:underline">higorbritocontact@gmail.com</a>
+                        </div>
+                         <a href="mailto:higorbritocontact@gmail.com" class="inline-block bg-black text-white font-semibold py-3 px-6 rounded-lg hover:bg-stone-800 transition-colors duration-300 shadow-md" data-lang-key="contactButton">
+                             Say Hello
+                         </a>
+                    </div>
+                 </div>
             </div>
         </section>
         
@@ -293,21 +329,25 @@
                     navContact: 'Contact',
                     homeSubtitle: 'Software Engineer',
                     aboutTitle: 'A Passion for Solving Problems',
-                    aboutP1: 'My journey in technology is driven by a passion for building solutions that are not only functional and efficient, but also intuitive. I transform complex challenges into simple and elegant software.',
-                    aboutP2: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
-                    aboutSubtitle: 'Beyond the Code',
-                    aboutP3: 'My curiosity extends to areas like academic research and 3D modeling, where I explore new ways to visualize data and create immersive experiences. These passions fuel my innovative approach to software engineering.',
-                    imgPlaceholder: 'Image Placeholder',
+                    aboutP1: "As a technology enthusiast, I'm driven by curiosity and a passion for building intuitive, efficient solutions. I enjoy transforming complex challenges into elegant software, always eager to learn and explore what's next.",
+                    aboutP3: "Beyond coding, I'm an avid chess player, footballer, and runner. I also have a deep appreciation for Japanese and Korean culture, and I'm actively studying both languages. These diverse interests fuel my creative approach to problem-solving.",
+                    hobbyCard1Title: "Strategy & Logic",
+                    hobbyCard1Desc: "Chess",
+                    hobbyCard2Title: "Discipline & Motion",
+                    hobbyCard2Desc: "Football & Running",
+                    hobbyCard3Title: "Culture & Language",
+                    hobbyCard3Desc: "Japan & South Korea",
                     techStackTitle: 'My Tech Stack',
                     techFrontend: 'Frontend',
                     techBackend: 'Backend',
                     techML: 'ML & Data',
                     expTitle: 'Professional Experience',
-                    expJob1: 'Senior Developer',
-                    expJob1Tag: 'Current',
-                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-                    expJob2: 'Mid-level Developer',
-                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    expSubtitle: "I've had the privilege of contributing my skills at a world-class company.",
+                    expTimelineTitle: "Career Timeline",
+                    expJob1: 'Analyst Developer',
+                    expJob1Company: 'Samsung Electronics',
+                    expJob1Desc: 'Developed automation solutions using RPA, created internal web applications, and applied machine learning models with statistical software to enhance data-driven processes.',
+                    resumeText: 'Resume',
                     projectsTitle: 'Featured Projects',
                     proj1Title: 'Predictive Defect Analysis',
                     proj1Desc: 'A system to forecast component defects using machine learning, reducing production failures.',
@@ -321,8 +361,9 @@
                     proj5Desc: 'Built intelligent chatbots to automate customer support and internal process management.',
                     proj6Title: 'Product Management Systems',
                     proj6Desc: 'A comprehensive system for product lifecycle management, from ideation to launch.',
-                    contactTitle: "Let's Build Something Great",
-                    contactDesc: "Have a project in mind or want to connect? I'm always open to new challenges and collaborations.",
+                    contactTitle: "Get in Touch",
+                    contactDesc: "Have a question, a project idea, or just want to connect? Feel free to reach out. I'm always open to discussing new challenges and collaborations.",
+                    contactEmail: "Email me at",
                     contactButton: 'Say Hello',
                     footerRights: 'Higor. All rights reserved.'
                 },
@@ -334,21 +375,25 @@
                     navContact: 'Contato',
                     homeSubtitle: 'Engenheiro de Software',
                     aboutTitle: 'Paixão por Resolver Problemas',
-                    aboutP1: 'Minha jornada na tecnologia é movida pela paixão de construir soluções que não são apenas funcionais e eficientes, mas também intuitivas. Eu transformo desafios complexos em software simples e elegante.',
-                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    aboutSubtitle: 'Além do Código',
-                    aboutP3: 'Minha curiosidade se estende a áreas como pesquisa acadêmica e modelagem 3D, onde exploro novas formas de visualizar dados e criar experiências imersivas. Essas paixões alimentam minha abordagem inovadora na engenharia de software.',
-                    imgPlaceholder: 'Espaço para Imagem',
+                    aboutP1: "Como um entusiasta da tecnologia, sou movido pela curiosidade e pela paixão por construir soluções intuitivas e eficientes. Gosto de transformar desafios complexos em software elegante, sempre ansioso para aprender e explorar o que vem a seguir.",
+                    aboutP3: "Além da programação, sou um ávido jogador de xadrez, futebolista e corredor. Também tenho uma profunda apreciação pela cultura japonesa e coreana, e estudo ativamente ambos os idiomas. Esses interesses diversos alimentam minha abordagem criativa para a resolução de problemas.",
+                    hobbyCard1Title: "Estratégia & Lógica",
+                    hobbyCard1Desc: "Xadrez",
+                    hobbyCard2Title: "Disciplina & Movimento",
+                    hobbyCard2Desc: "Futebol & Corrida",
+                    hobbyCard3Title: "Cultura & Idioma",
+                    hobbyCard3Desc: "Japão & Coreia do Sul",
                     techStackTitle: 'Minhas Tecnologias',
                     techFrontend: 'Frontend',
                     techBackend: 'Backend',
                     techML: 'ML & Dados',
                     expTitle: 'Experiência Profissional',
-                    expJob1: 'Desenvolvedor Sênior',
-                    expJob1Tag: 'Atual',
-                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-                    expJob2: 'Desenvolvedor Pleno',
-                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    expSubtitle: "Tive o privilégio de contribuir com minhas habilidades em uma empresa de classe mundial.",
+                    expTimelineTitle: "Linha do Tempo da Carreira",
+                    expJob1: 'Analista Desenvolvedor',
+                    expJob1Company: 'Samsung Electronics',
+                    expJob1Desc: "Desenvolvi soluções de automação com RPA, criei aplicações web internas e apliquei modelos de machine learning com software estatístico para aprimorar processos orientados a dados.",
+                    resumeText: 'Currículo',
                     projectsTitle: 'Projetos em Destaque',
                     proj1Title: 'Análise Preditiva de Defeitos',
                     proj1Desc: 'Um sistema para prever defeitos de componentes usando machine learning, reduzindo falhas de produção.',
@@ -362,8 +407,9 @@
                     proj5Desc: 'Construiu chatbots inteligentes para automatizar o suporte ao cliente e o gerenciamento de processos internos.',
                     proj6Title: 'Sistemas de Gestão de Produtos',
                     proj6Desc: 'Um sistema abrangente para o gerenciamento do ciclo de vida do produto, da ideação ao lançamento.',
-                    contactTitle: 'Vamos Construir Algo Incrível',
-                    contactDesc: 'Tem um projeto em mente ou quer se conectar? Estou sempre aberto a novos desafios e colaborações.',
+                    contactTitle: 'Entre em Contato',
+                    contactDesc: 'Tem uma pergunta, uma ideia de projeto ou apenas quer se conectar? Sinta-se à vontade para me contatar. Estou sempre aberto a discutir novos desafios e colaborações.',
+                    contactEmail: "Envie um email para",
                     contactButton: 'Diga Olá',
                     footerRights: 'Higor. Todos os direitos reservados.'
                 },
@@ -375,21 +421,25 @@
                     navContact: '연락처',
                     homeSubtitle: '소프트웨어 엔지니어',
                     aboutTitle: '문제 해결에 대한 열정',
-                    aboutP1: '저의 기술 여정은 기능적이고 효율적일 뿐만 아니라 직관적인 솔루션을 구축하려는 열정으로 움직입니다. 복잡한 문제를 간단하고 우아한 소프트웨어로 변환합니다.',
-                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    aboutSubtitle: '코드 너머',
-                    aboutP3: '저의 호기심은 학술 연구 및 3D 모델링과 같은 분야로 확장되어 데이터를 시각화하고 몰입형 경험을 만드는 새로운 방법을 탐구합니다. 이러한 열정은 소프트웨어 엔지니어링에 대한 저의 혁신적인 접근 방식에 활력을 불어넣습니다.',
-                    imgPlaceholder: '이미지 자리 표시자',
+                    aboutP1: "기술 애호가로서 저는 호기심과 직관적이고 효율적인 솔루션을 구축하려는 열정으로 움직입니다. 복잡한 문제를 우아한 소프트웨어로 바꾸는 것을 즐기며 항상 다음을 배우고 탐구하기를 열망합니다.",
+                    aboutP3: "코딩 외에도 저는 열렬한 체스 플레이어, 축구 선수, 주자입니다. 또한 일본과 한국 문화에 대한 깊은 감사를 표하며 두 언어를 적극적으로 공부하고 있습니다. 이러한 다양한 관심사는 문제 해결에 대한 저의 창의적인 접근 방식에 활력을 불어넣습니다.",
+                    hobbyCard1Title: "전략 및 논리",
+                    hobbyCard1Desc: "체스",
+                    hobbyCard2Title: "규율 및 운동",
+                    hobbyCard2Desc: "축구 및 달리기",
+                    hobbyCard3Title: "문화 및 언어",
+                    hobbyCard3Desc: "일본 및 대한민국",
                     techStackTitle: '내 기술 스택',
                     techFrontend: '프론트엔드',
                     techBackend: '백엔드',
                     techML: '머신러닝 및 데이터',
                     expTitle: '업무 경험',
-                    expJob1: '시니어 개발자',
-                    expJob1Tag: '현재',
-                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-                    expJob2: '중급 개발자',
-                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    expSubtitle: "세계적인 기업에서 제 기술을 기여할 수 있는 특권을 가졌습니다.",
+                    expTimelineTitle: "경력 타임라인",
+                    expJob1: '분석가 개발자',
+                    expJob1Company: '삼성전자',
+                    expJob1Desc: "RPA를 사용하여 자동화 솔루션을 개발하고, 내부 웹 애플리케이션을 제작했으며, 통계 소프트웨어로 머신러닝 모델을 적용하여 데이터 기반 프로세스를 향상시켰습니다.",
+                    resumeText: '이력서',
                     projectsTitle: '주요 프로젝트',
                     proj1Title: '예측 결함 분석',
                     proj1Desc: '기계 학습을 사용하여 부품 결함을 예측하고 생산 실패를 줄이는 시스템입니다.',
@@ -403,8 +453,9 @@
                     proj5Desc: '고객 지원 및 내부 프로세스 관리를 자동화하기 위해 지능형 챗봇을 구축했습니다.',
                     proj6Title: '제품 관리 시스템',
                     proj6Desc: '아이디어 구상부터 출시까지 제품 수명주기 관리를 위한 포괄적인 시스템입니다.',
-                    contactTitle: '훌륭한 것을 만들어 봅시다',
-                    contactDesc: '프로젝트를 염두에 두고 있거나 연결하고 싶으신가요? 저는 항상 새로운 도전과 협업에 열려 있습니다.',
+                    contactTitle: '연락주세요',
+                    contactDesc: '질문, 프로젝트 아이디어 또는 그냥 연결하고 싶으신가요? 언제든지 연락주세요. 저는 항상 새로운 도전과 협업에 대해 논의할 준비가 되어 있습니다.',
+                    contactEmail: "이메일 보내기",
                     contactButton: '안녕하세요',
                     footerRights: 'Higor. 모든 권리 보유.'
                 },
@@ -416,21 +467,25 @@
                     navContact: '連絡先',
                     homeSubtitle: 'ソフトウェアエンジニア',
                     aboutTitle: '問題解決への情熱',
-                    aboutP1: '私のテクノロジーの旅は、機能的で効率的であるだけでなく、直感的なソリューションを構築するという情熱によって動かされています。私は複雑な課題をシンプルでエレガントなソフトウェアに変換します。',
-                    aboutP2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    aboutSubtitle: 'コードを超えて',
-                    aboutP3: '私の好奇心は、学術研究や3Dモデリングなどの分野にまで及び、データを視覚化して没入型の体験を生み出す新しい方法を探求しています。これらの情熱が、ソフトウェアエンジニアリングに対する私の革신的なアプローチを支えています。',
-                    imgPlaceholder: '画像プレースホルダー',
+                    aboutP1: "テクノロジー愛好家として、私は好奇心と直感的で効率的なソリューションを構築する情熱に駆られています。複雑な課題をエレガントなソフトウェアに変えることを楽しみ、常に次のことを学び、探求することに熱心です。",
+                    aboutP3: "コーディング以外では、熱心なチェスプレーヤー、サッカー選手、ランナーです。また、日本と韓国の文化に深い感謝の念を抱いており、両方の言語を積極的に勉強しています。これらの多様な興味が、問題解決に対する私の創造的なアプローチを刺激します。",
+                    hobbyCard1Title: "戦略と論理",
+                    hobbyCard1Desc: "チェス",
+                    hobbyCard2Title: "規律と運動",
+                    hobbyCard2Desc: "サッカーとランニング",
+                    hobbyCard3Title: "文化と言語",
+                    hobbyCard3Desc: "日本と韓国",
                     techStackTitle: '私の技術スタック',
                     techFrontend: 'フロントエンド',
                     techBackend: 'バックエンド',
                     techML: '機械学習とデータ',
                     expTitle: '職務経験',
-                    expJob1: 'シニア開発者',
-                    expJob1Tag: '現在',
-                    expJob1Desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-                    expJob2: '中級開発者',
-                    expJob2Desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+                    expSubtitle: "世界クラスの企業で私のスキルを貢献する特権がありました。",
+                    expTimelineTitle: "キャリアタイムライン",
+                    expJob1: 'アナリストデベロッパー',
+                    expJob1Company: 'サムスン電子',
+                    expJob1Desc: "RPAを使用して自動化ソリューションを開発し、社内ウェブアプリケーションを作成し、統計ソフトウェアで機械学習モデルを適用してデータ駆動型プロセスを強化しました。",
+                    resumeText: '履歴書',
                     projectsTitle: '注目のプロジェクト',
                     proj1Title: '予測欠陥分析',
                     proj1Desc: '機械学習を使用してコンポーネントの欠陥を予測し、生産の失敗を減らすシステム。',
@@ -444,14 +499,14 @@
                     proj5Desc: '顧客サポートと内部プロセス管理を自動化するために、インテリジェントなチャットボットを構築しました。',
                     proj6Title: '製品管理システム',
                     proj6Desc: 'アイデア出しから発売までの製品ライフサイクル管理のための包括的なシステム。',
-                    contactTitle: '素晴らしいものを一緒に作りましょう',
-                    contactDesc: 'プロジェクトを検討中ですか、それとも連絡を取りたいですか？私は常に新しい挑戦と協力にオープンです。',
+                    contactTitle: 'お問い合わせ',
+                    contactDesc: '質問、プロジェクトのアイデア、または単に連絡を取りたいですか？お気軽にご連絡ください。私は常に新しい挑戦や協力について話し合うことにオープンです。',
+                    contactEmail: "私にメールする",
                     contactButton: 'こんにちは',
                     footerRights: 'Higor. 全著作権所有。'
                 }
             };
 
-            let nameInterval;
             const nameElement = document.getElementById('dynamic-name');
             const nameStrings = {
                 en: 'Higor.',
@@ -461,9 +516,7 @@
             };
 
             function updateNameForLanguage(lang) {
-                if (nameInterval) clearInterval(nameInterval);
                 if (!nameElement) return;
-
                 const nameText = nameStrings[lang] || nameStrings['en'];
                 nameElement.textContent = nameText;
                 nameElement.style.opacity = '1';
@@ -477,11 +530,7 @@
                     const key = el.dataset.langKey;
                     const translation = langTranslations[key];
                     if (translation !== undefined) {
-                         if (key === 'expJob1') {
-                            el.childNodes[0].nodeValue = translation + ' ';
-                        } else {
-                            el.textContent = translation;
-                        }
+                        el.textContent = translation;
                     }
                 });
                 updateNameForLanguage(lang);
